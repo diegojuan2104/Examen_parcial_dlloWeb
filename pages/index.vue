@@ -10,7 +10,7 @@
       
       
         <b-form-group label="Select vehicle type" label-for="v_type" > 
-          <b-form-select  id="v_type" v-model="vp.type" :options="vehicle_type"></b-form-select>
+          <b-form-select  id="v_type" v-model="vp.vehicle_type" :options="vehicle_type"></b-form-select>
         </b-form-group>
 
         <b-form-group label="Plaque number:" label-for="plaque_number">
@@ -43,7 +43,7 @@
             type="text"
             placeholder="Insert the brand of the vehicle"
             id="brand"
-            v-model="brand"
+            v-model="vp.brand"
             v-bind:required="true"
           />
         </b-form-group>
@@ -55,7 +55,7 @@
             type="text"
             placeholder="Insert the color of the vehicle"
             id="color"
-            v-model="color"
+            v-model="vp.color"
             v-bind:required="true"
           />
         </b-form-group>
@@ -64,25 +64,23 @@
           <b-form-input
             class="form-control"
             type="datetime-local"
-            id="car_color"
+            id="date_timer"
             v-bind:required="true"
-            v-model="entrance_datetime"
+            v-model="vp.entrance_datetime"
           />
         </b-form-group>
 
 
       <br/>
-        <b-button class="bg-udem" type="submit"  v-if="!enEdicion">Submit</b-button>
-        <b-button clas="bg-udem" @click="update()" variant="primary" v-else>Actualizar estudiante</b-button>
+        <b-button  type="submit"  v-if="!enEdicion">Submit</b-button>
+        <b-button  @click="update()" variant="primary" v-else>Update register</b-button>
       </b-form>
 
-
-      <b-table striped hover :items="listareducida">
-        <template v-slot:cell(Modificar)="row">
-          <b-button size="sm" @click="upload(row)" class="bg-udem">Modificar</b-button>
-        </template>
-        <template v-slot:cell(Eliminar)="row">
-          <b-button size="sm" @click="ddelete(row)" class="bg-udem">Eliminar</b-button>
+      <b-table striped hover :items="vehicles_list">
+        <template v-slot:cell(actions)="row">
+          <b-button size="sm" @click="letOut(row)">Let out</b-button>
+          <b-button size="sm" @click="upload(row)">Modify</b-button>
+          <b-button size="sm" @click="ddelete(row)">Delete</b-button>
         </template>
       </b-table>
     </b-container>

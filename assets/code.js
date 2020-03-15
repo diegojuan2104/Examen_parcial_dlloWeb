@@ -1,7 +1,6 @@
 export default {
     data() {
         return {
-
             vp: {    
                 id: "",
                 plaque:"",
@@ -9,6 +8,8 @@ export default {
                 brand:"",
                 city_plaque:"",
                 entrance_datetime:"", 
+                vehicle_type:"",
+                actions:true
             },
 
             vehicle_type: [
@@ -23,12 +24,12 @@ export default {
         };
     },
 
-   
 
     methods: {
-        newp(){
-            this.vehicles_list.push(vp)
-            console.log(vehicles_list)
+        newP(){
+            this.vp.id = this.vehicles_list.length 
+            this.vehicles_list.push(this.vp)
+            console.log(this.vehicles_list)
         }
     }
 };
