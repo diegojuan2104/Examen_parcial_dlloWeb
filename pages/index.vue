@@ -72,15 +72,17 @@
 
 
       <br/>
-        <b-button  type="submit"  v-if="!enEdicion">Submit</b-button>
-        <b-button  @click="update()" variant="primary" v-else>Update register</b-button>
+        <b-button  type="submit"  variant="primary" v-if="!edit">Submit</b-button>
+        <b-button  @click="update()" variant="primary" v-else>Update</b-button>
       </b-form>
+
+      <br/>
 
       <b-table striped hover :items="vehicles_list">
         <template v-slot:cell(actions)="row">
-          <b-button size="sm" @click="letOut(row)">Let out</b-button>
-          <b-button size="sm" @click="upload(row)">Modify</b-button>
-          <b-button size="sm" @click="ddelete(row)">Delete</b-button>
+          <b-button size="sm" show variant="success" @click="letOut(row)">Let out</b-button>
+          <b-button size="sm" show variant="info" @click="upload(row)">Modify</b-button>
+          <b-button size="sm" show variant="danger" @click="ddelete(row)">Delete</b-button>
         </template>
       </b-table>
     </b-container>
