@@ -17,7 +17,7 @@
               <li>Car: 8000</li>
               <li>Motorcycle: 4000</li>
               <li>Bicycle: 2000</li>
-              <li>Truck: 8000</li>
+              <li>Truck: 21000</li>
             </ul>
           </b-card-text>
         </b-card-body>
