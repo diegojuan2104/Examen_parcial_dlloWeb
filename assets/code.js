@@ -110,7 +110,40 @@ export default {
           },
 
           letOut({item}){
+            let date1 = new Date(item.entrance_datetime)
+            let now = new Date(new Date().toLocaleString())
+            var dif = now.getTime() - date1.getTime()
+            let hours = parseInt((dif/1000)/3600)
+
+            let position = this.vehicles_list.findIndex(
+                vp => vp.plaque == item.plaque
+              );
+
+            let vt = this.vehicles_list[position].vehicle_type
+            let payment = this.prices(vt) * hours
             
+            alert("Hours:"+hours+" Debt:"+payment)
+
+          },
+
+          prices(vt){
+            let price = 0;
+            switch(vt) {
+                case "Car":
+                  price= 8000
+                  break;
+                case "Motorcycle":
+                  price= 4000
+                  break;
+                case "Bicycle":
+                  price= 2000
+                    break;
+                case "Truck":
+                  price= 21000
+                    break;
+              }
+              return price
           }
+
     }
 };
